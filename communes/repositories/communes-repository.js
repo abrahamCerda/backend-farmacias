@@ -1,12 +1,11 @@
 const axios = require('axios');
+const FormData = require('form-data');
 const axiosErrorHandler = require('../../shared/errors/axios-error-handler');
-const { DOMParser } = require('xmldom');
-const xmlToJSON = require('xmltojson');
-xmlToJSON.stringToXML = (string) => new DOMParser().parseFromString(string, 'text/xml');
+const HtmlParser = require('../../util/html-parser');
 const DEFAULT_MINSAL_API_BASE_URL = 'https://farmanet.minsal.cl/maps/index.php';
 const MINSAL_API_BASE_URL = process.env.MINSAL_API_BASE_URL
     || DEFAULT_MINSAL_API_BASE_URL;
-const SKIP_OPTION_INDEX = 0;
+const SELECT_OPTION_TEXT = 'Elija Comuna';
 
 const repository = {
     getAllRegionCommunes: (regionId) => {
@@ -20,9 +19,9 @@ const repository = {
             axios.post(endpoint, formData, {
                 headers,
             }).then(response => {
-                const parsedXml = xmlToJSON.parseString(response.data);
-                const validCommunes = parsedXml.xml.reduce((accum, value) => {
-                    if(value.attr.value.value === SKIP_OPTION_INDEX){
+                const tagsContent = HtmlParser.extractTagValues(response);
+                const validCommunes = tagsContent.reduce((accum, value) => {
+                    if(value === SELECT_OPTION_TEXT){
                         return accum;
                     }
                     accum.push(value);
