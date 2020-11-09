@@ -7,3 +7,5 @@ class ConnectionError extends Error {
         this.name = 'CONNECTION_ERROR';
     }
 }
+
+module.exports = ConnectionError;

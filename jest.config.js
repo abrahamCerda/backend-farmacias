@@ -191,4 +191,8 @@ module.exports = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
+  testMatch: ['**/__tests__/**/*.test.?(ts|js)'],
+  setupFiles: [
+    'dotenv/config',
+  ],
 };

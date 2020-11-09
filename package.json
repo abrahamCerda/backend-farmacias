@@ -7,12 +7,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "axios": "^0.21.0",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
     "form-data": "^3.0.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "jest": "^26.6.3"
