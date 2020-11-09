@@ -53,7 +53,7 @@ const generator = {
         <option value='133'>TALAGANTE</option>
         <option value='134'>TIL-TIL</option>
         <option value='135'>VITACURA</option>`;
-    },
+    }
 }
 
 module.exports = generator;

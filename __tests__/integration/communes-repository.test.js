@@ -1,6 +1,6 @@
 const communesRepository = require('../../communes/repositories/communes-repository');
 
-describe('Integration Comunnes Repository', () => {
+describe('Integration Communes Repository', () => {
     const testRegionId = 7;
     const testNumberOfCommunes = 52;
     test('should get all RM communes in JSON format', () => {
