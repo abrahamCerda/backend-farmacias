@@ -3,6 +3,7 @@ const path = require('path');
 const logger = require('morgan');
 const cors = require('cors');
 
+const cacheMiddleware = require('./shared/cache/middleware/cache-middleware');
 const pharmaciesRouter = require('./pharmacies/controllers/pharmacies-controller');
 const communesRouter = require('./communes/controllers/communes-controller');
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(cacheMiddleware);
 app.use('/pharmacies', pharmaciesRouter);
 app.use('/communes', communesRouter);
 
