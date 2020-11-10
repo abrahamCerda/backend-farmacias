@@ -17,6 +17,7 @@ const service = {
                     accum.push({
                        local_name: value.local_nombre,
                         address: value.local_direccion,
+                        commune: value.comuna_nombre,
                         telephone: value.local_telefono,
                         lat: value.local_lat,
                         lng: value.local_lng,

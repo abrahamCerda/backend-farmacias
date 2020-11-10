@@ -22,8 +22,8 @@ describe('Unit Pharmacies Service', () => {
                 expect(filteredPharmacies).toBeDefined();
                 expect(filteredPharmacies.lenght).not.toBe(0);
                 const isFiltered = filteredPharmacies.every(pharmacy =>
-                testFilters.communes.includes(pharmacy.comuna_nombre) ||
-                    testFilters.names.includes(pharmacy.local_nombre));
+                testFilters.communes.includes(pharmacy.commune) ||
+                    testFilters.names.includes(pharmacy.local_name));
                 expect(isFiltered).toBeTruthy();
             });
     });
