@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  node:
+    env_file:
+      - .env
+    build:
+      context: ./
+      target: development
+    image: nodejs-12:12.13.0-alpine
+    command: yarn run dev
+    restart: always
+    volumes:
+      - ./:/app
+    ports:
+      - "3108:3000"
+  #frontend-app must be added here in order to test the two projects with docker compose
