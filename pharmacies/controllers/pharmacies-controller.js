@@ -8,9 +8,9 @@ const RESPONSE_TTL = 1800;
 
 router.get('/on-duty', function(req, res, next) {
   const names = Array.isArray(req.query.names) ? req.query.names.map(name => name.toUpperCase())
-      : req.query.names;
+      : req.query.names.toUpperCase();
   const communes = Array.isArray(req.query.communes) ? req.query.communes.map(commune => commune.toUpperCase())
-      : req.query.communes;
+      : req.query.communes.toUpperCase();
   pharmaciesService.getRegionPharmacies(METROPOLITAN_REGION_ID, {
     names,
     communes,
