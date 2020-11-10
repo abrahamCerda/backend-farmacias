@@ -1,3 +1,5 @@
+const HttpError = require("./http-error");
+const ConnectionError = require("./connection-error");
 const errorHandler = (error, response) => {
     let code = 500;
     let message = 'Internal Server Error';

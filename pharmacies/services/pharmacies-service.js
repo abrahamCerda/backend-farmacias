@@ -5,11 +5,24 @@ const service = {
         return pharmaciesRepository
             .getAllRegionPharmacies(regionId)
             .then(pharmacies => {
-                if(!filters.names && !filters.communes){
+                if((filters.names === undefined || filters.names === '' || !filters.names.length)
+                    && (!filters.communes || filters.communes === '' || !filters.communes.length)){
                     return pharmacies;
                 }
-                return pharmacies.filter(pharmacie => filters.names.includes(pharmacie.local_nombre) &&
-                filters.communes.includes(pharmacie.comuna_nombre));
+                return pharmacies.reduce((accum, value) => {
+                    if(!filters.names.includes(value.local_nombre) &&
+                        !filters.communes.includes(value.comuna_nombre)){
+                        return accum;
+                    }
+                    accum.push({
+                       local_name: value.local_nombre,
+                        address: value.local_direccion,
+                        telephone: value.local_telefono,
+                        lat: value.local_lat,
+                        lng: value.local_lng,
+                    });
+                    return accum;
+                }, []);
             });
     },
 };
